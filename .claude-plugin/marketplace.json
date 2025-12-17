@@ -1,0 +1,15 @@
+{
+  "name": "aiorg-plugins",
+  "description": "Free Claude Code plugins by AI Org - the team behind starter kits for founders",
+  "owner": {
+    "name": "AI Org",
+    "url": "https://aiorg.dev"
+  },
+  "plugins": [
+    {
+      "name": "claude-todo",
+      "source": "./claude-todo",
+      "description": "Team task board for Claude Code projects. Track tasks, assign to teammates, auto-recognize 'I need to do X' phrases."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "claude-todo",
+  "description": "Team task board for Claude Code projects",
+  "version": "1.0.0",
+  "author": {
+    "name": "AI Org",
+    "url": "https://aiorg.dev"
+  },
+  "repository": "https://github.com/aiorg-dev/claude-plugins",
+  "keywords": ["todo", "tasks", "team", "productivity", "project-management"]
+}
