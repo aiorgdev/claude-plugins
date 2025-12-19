@@ -1,0 +1,11 @@
+{
+  "name": "claude-changelog",
+  "description": "Auto-generate changelog entries from git commits - narrative for marketing, classic for developers",
+  "version": "1.0.0",
+  "author": {
+    "name": "AI Org",
+    "url": "https://aiorg.dev"
+  },
+  "repository": "https://github.com/aiorg-dev/claude-plugins",
+  "keywords": ["changelog", "release-notes", "git", "automation", "marketing"]
+}
