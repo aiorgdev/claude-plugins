@@ -10,6 +10,11 @@
       "name": "claude-todo",
       "source": "./claude-todo",
       "description": "Team task board for Claude Code projects. Track tasks, assign to teammates, auto-recognize 'I need to do X' phrases."
+    },
+    {
+      "name": "claude-spec",
+      "source": "./claude-spec",
+      "description": "Interactive product specification designer. Create detailed specs through guided conversation with Claude as your product partner."
     }
   ]
 }
