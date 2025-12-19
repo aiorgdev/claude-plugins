@@ -1,4 +1,4 @@
-# claude-prd
+# aiorg-prd
 
 Interactive PRD (Product Requirements Document) designer for Claude Code. Design features through guided conversation - Claude acts as your product partner, asking smart questions and generating implementation-ready documentation.
 
@@ -18,7 +18,7 @@ Interactive PRD (Product Requirements Document) designer for Claude Code. Design
 /plugin marketplace add aiorgdev/claude-plugins
 
 # Install to your project
-/plugin install claude-prd --scope project
+/plugin install aiorg-prd --scope project
 ```
 
 ## Usage

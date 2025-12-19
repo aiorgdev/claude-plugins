@@ -1,4 +1,4 @@
-# claude-changelog
+# aiorg-changelog
 
 Auto-generate changelog entries from git commits. Produces two formats:
 - **Narrative JSON** - For landing pages, founder voice, marketing-friendly
@@ -7,7 +7,11 @@ Auto-generate changelog entries from git commits. Produces two formats:
 ## Installation
 
 ```bash
-claude plugin install claude-changelog
+# Add AI Org marketplace (one time)
+/plugin marketplace add aiorgdev/claude-plugins
+
+# Install to your project
+/plugin install aiorg-changelog --scope project
 ```
 
 ## Quick Start
@@ -98,7 +102,7 @@ export default function ChangelogPage() {
 
 Want changelog generated automatically after push? Add this hook to your project:
 
-1. Copy template: `cp ~/.claude/plugins/claude-changelog/templates/hook-post-push.sh .claude/hooks/`
+1. Copy template: `cp ~/.claude/plugins/aiorg-changelog/templates/hook-post-push.sh .claude/hooks/`
 2. Make executable: `chmod +x .claude/hooks/hook-post-push.sh`
 
 Or manually run `/changelog` when you want to publish updates.

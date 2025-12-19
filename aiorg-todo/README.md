@@ -1,4 +1,4 @@
-# claude-todo
+# aiorg-todo
 
 Team task board for Claude Code projects. Track tasks, assign to teammates, and let Claude auto-recognize when you mention something you need to do.
 
@@ -17,7 +17,7 @@ Team task board for Claude Code projects. Track tasks, assign to teammates, and 
 /plugin marketplace add aiorgdev/claude-plugins
 
 # Install to your project (team sees it)
-/plugin install claude-todo --scope project
+/plugin install aiorg-todo --scope project
 
 # First time setup
 /todo setup

@@ -16,7 +16,7 @@ Free, open-source plugins for Claude Code. Built by the team behind [aiorg.dev](
 
 ## Available Plugins
 
-### claude-todo
+### aiorg-todo
 
 Team task board that lives in your repo. Track tasks, assign to teammates, and let Claude auto-recognize "I need to do X" phrases.
 
@@ -27,11 +27,48 @@ Team task board that lives in your repo. Track tasks, assign to teammates, and l
 - Works in English and Polish
 
 ```bash
-/plugin install claude-todo --scope project
+/plugin install aiorg-todo --scope project
 /todo setup
 ```
 
-[Full documentation](./claude-todo/README.md)
+[Full documentation](./aiorg-todo/README.md)
+
+---
+
+### aiorg-prd
+
+Interactive PRD (Product Requirements Document) designer. Design features through guided conversation - Claude acts as your product partner, asking smart questions and generating implementation-ready documentation.
+
+- Interactive questioning (one question at a time)
+- Codebase-aware suggestions
+- Generates PRD.md, CONTEXT.md, and TASKS.md
+- Resume anytime with `/prd continue`
+- Works in English and Polish
+
+```bash
+/plugin install aiorg-prd --scope project
+/prd new "my feature"
+```
+
+[Full documentation](./aiorg-prd/README.md)
+
+---
+
+### aiorg-changelog
+
+Auto-generate changelog entries from git commits. Produces two formats - narrative JSON for landing pages (founder voice), and classic Markdown for developers.
+
+- Dual output: JSON + Markdown
+- Marketing-friendly narratives
+- Works with conventional commits
+- Optional automation hooks
+
+```bash
+/plugin install aiorg-changelog --scope project
+/changelog init
+```
+
+[Full documentation](./aiorg-changelog/README.md)
 
 ---
 

@@ -7,14 +7,19 @@
   },
   "plugins": [
     {
-      "name": "claude-todo",
-      "source": "./claude-todo",
+      "name": "aiorg-todo",
+      "source": "./aiorg-todo",
       "description": "Team task board for Claude Code projects. Track tasks, assign to teammates, auto-recognize 'I need to do X' phrases."
     },
     {
-      "name": "claude-prd",
-      "source": "./claude-prd",
+      "name": "aiorg-prd",
+      "source": "./aiorg-prd",
       "description": "Interactive PRD designer. Create detailed Product Requirements Documents through guided conversation with Claude as your product partner."
+    },
+    {
+      "name": "aiorg-changelog",
+      "source": "./aiorg-changelog",
+      "description": "Auto-generate changelog entries from git commits. Narrative JSON for landing pages, classic Markdown for developers."
     }
   ]
 }
