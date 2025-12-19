@@ -1,14 +1,14 @@
-# claude-spec
+# claude-prd
 
-Interactive product specification designer for Claude Code. Design features through guided conversation - Claude acts as your product partner, asking smart questions and generating implementation-ready documentation.
+Interactive PRD (Product Requirements Document) designer for Claude Code. Design features through guided conversation - Claude acts as your product partner, asking smart questions and generating implementation-ready documentation.
 
 ## Features
 
 - **Interactive questioning** - Claude asks one question at a time, suggests options, explores your codebase
 - **Adaptive depth** - Simple features get 5 questions, complex ones get 7+
 - **Codebase-aware** - Analyzes your project to make relevant suggestions
-- **Implementation-ready** - Generates SPEC.md, CONTEXT.md, and TASKS.md
-- **Resume anytime** - Stop mid-spec, continue later with `/spec continue`
+- **Implementation-ready** - Generates PRD.md, CONTEXT.md, and TASKS.md
+- **Resume anytime** - Stop mid-PRD, continue later with `/prd continue`
 - **Bilingual** - Works in English and Polish
 
 ## Installation
@@ -18,15 +18,15 @@ Interactive product specification designer for Claude Code. Design features thro
 /plugin marketplace add aiorgdev/claude-plugins
 
 # Install to your project
-/plugin install claude-spec --scope project
+/plugin install claude-prd --scope project
 ```
 
 ## Usage
 
-### Start a new spec
+### Start a new PRD
 ```
-/spec new
-/spec new "bookmarks feature"
+/prd new
+/prd new "bookmarks feature"
 ```
 
 Or just say it naturally:
@@ -34,17 +34,18 @@ Or just say it naturally:
 "Let's design a bookmarks feature"
 "Zaprojektujmy system folderów"
 "Help me plan the payment flow"
+"Create PRD for user authentication"
 ```
 
-### View specs
+### View PRDs
 ```
-/spec                    # Dashboard - list all specs
-/spec view bookmarks     # View specific spec
+/prd                    # Dashboard - list all PRDs
+/prd view bookmarks     # View specific PRD
 ```
 
 ### Continue drafting
 ```
-/spec continue           # Resume last incomplete spec
+/prd continue           # Resume last incomplete PRD
 ```
 
 ## How It Works
@@ -68,9 +69,9 @@ Claude explores your project first - reading CLAUDE.md, checking package.json, s
 ### 3. Generated Files
 
 ```
-.specs/
+.prd/
 └── bookmarks/
-    ├── SPEC.md           # Main specification
+    ├── PRD.md            # Main requirements document
     ├── CONTEXT.md        # Codebase analysis
     ├── TASKS.md          # Implementation checklist
     └── metadata.json     # Status tracking
@@ -83,7 +84,7 @@ You: Let's design a bookmarks feature
 
 Claude:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SPEC: bookmarks
+PRD: bookmarks
 Phase 1/6: Problem Definition
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -99,7 +100,7 @@ Q1 (1/7): In one sentence - what do bookmarks do?
 You: Users can save URLs and organize them into folders
 
 Claude: Got it. This looks like a medium-complexity feature.
-I'll ask 7 questions to create a solid spec.
+I'll ask 7 questions to create a solid PRD.
 
 Q2 (2/7): What problem does this solve?
 Not "what it does" - what PAIN does it eliminate?
@@ -107,22 +108,22 @@ Not "what it does" - what PAIN does it eliminate?
 [... continues through all questions ...]
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SPEC COMPLETE!
+PRD COMPLETE!
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 Created:
-├── .specs/bookmarks/SPEC.md
-├── .specs/bookmarks/CONTEXT.md
-├── .specs/bookmarks/TASKS.md
-└── .specs/bookmarks/metadata.json
+├── .prd/bookmarks/PRD.md
+├── .prd/bookmarks/CONTEXT.md
+├── .prd/bookmarks/TASKS.md
+└── .prd/bookmarks/metadata.json
 
-To implement: "Implement the bookmarks spec"
+To implement: "Implement the bookmarks PRD"
 ```
 
 ## Generated File Formats
 
-### SPEC.md
-Human-readable specification with:
+### PRD.md
+Human-readable requirements document with:
 - Problem statement
 - Scope (in/out)
 - User flow
@@ -150,11 +151,11 @@ Implementation checklist ordered by phase:
 
 | Trigger | Action |
 |---------|--------|
-| "let's design X" / "zaprojektujmy X" | Start new spec |
-| "spec out X" / "zróbmy spec X" | Start new spec |
-| "show me the X spec" / "pokaż spec X" | View spec |
-| "continue speccing" / "kontynuuj spec" | Resume drafting |
-| "what specs do we have?" | List all specs |
+| "let's design X" / "zaprojektujmy X" | Start new PRD |
+| "create PRD for X" / "stwórz PRD dla X" | Start new PRD |
+| "show me the X PRD" / "pokaż PRD X" | View PRD |
+| "continue PRD" / "kontynuuj PRD" | Resume drafting |
+| "what PRDs do we have?" | List all PRDs |
 
 ---
 

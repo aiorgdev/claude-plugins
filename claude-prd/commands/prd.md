@@ -1,22 +1,22 @@
 ---
-description: Interactive product specification designer - create detailed specs through guided conversation
+description: Interactive PRD (Product Requirements Document) designer - create detailed PRDs through guided conversation
 ---
 
-# /spec Command
+# /prd Command
 
-Design product specifications through interactive dialogue. Claude acts as a product partner - asking smart questions, exploring the codebase, and generating implementation-ready documentation.
+Design Product Requirements Documents through interactive dialogue. Claude acts as a product partner - asking smart questions, exploring the codebase, and generating implementation-ready documentation.
 
 ## Modes
 
-### `/spec` (no args) - Dashboard
+### `/prd` (no args) - Dashboard
 
-1. Check if `.specs/` directory exists
-2. If not exists, show welcome message and suggest `/spec new`
-3. If exists, read all spec folders and show:
+1. Check if `.prd/` directory exists
+2. If not exists, show welcome message and suggest `/prd new`
+3. If exists, read all PRD folders and show:
 
 Output format:
 ```
-## Specifications
+## Product Requirements
 
 | Name | Status | Last Updated |
 |------|--------|--------------|
@@ -24,15 +24,15 @@ Output format:
 | bookmarks | Drafting (3/7) | 2025-12-19 |
 
 ---
-2 specs | 1 ready | 1 in progress
+2 PRDs | 1 ready | 1 in progress
 
 Quick actions:
-- `/spec new` - Create new spec
-- `/spec view [name]` - View spec details
-- `/spec continue` - Resume drafting
+- `/prd new` - Create new PRD
+- `/prd view [name]` - View PRD details
+- `/prd continue` - Resume drafting
 ```
 
-### `/spec new` - Start New Spec (Interactive)
+### `/prd new` - Start New PRD (Interactive)
 
 1. Ask for feature name (use AskUserQuestion):
    ```
@@ -42,37 +42,37 @@ Quick actions:
 
 2. Slugify the name (e.g., "OAuth Integration" → "oauth-integration")
 
-3. Check if `.specs/[slug]/` exists:
-   - If exists: Ask "Spec already exists. Continue editing or start fresh?"
+3. Check if `.prd/[slug]/` exists:
+   - If exists: Ask "PRD already exists. Continue editing or start fresh?"
    - If not: Create folder structure
 
 4. Run **Phase 0: Codebase Analysis** (automatic, no questions)
 
 5. Start **Interactive Flow** (see below)
 
-### `/spec new "[feature name]"` - Start With Context
+### `/prd new "[feature name]"` - Start With Context
 
-Same as `/spec new` but skip step 1, use provided name directly.
+Same as `/prd new` but skip step 1, use provided name directly.
 
-### `/spec view [name]` - View Spec
+### `/prd view [name]` - View PRD
 
-1. Read `.specs/[name]/SPEC.md`
-2. Read `.specs/[name]/metadata.json` for status
-3. Display formatted spec with status badge
+1. Read `.prd/[name]/PRD.md`
+2. Read `.prd/[name]/metadata.json` for status
+3. Display formatted PRD with status badge
 4. Show available actions:
-   - "Edit this spec" → `/spec edit [name]`
+   - "Edit this PRD" → `/prd edit [name]`
    - "View tasks" → show TASKS.md
 
-### `/spec continue` - Resume Drafting
+### `/prd continue` - Resume Drafting
 
-1. Read all `.specs/*/metadata.json`
-2. Find specs with `status: "drafting"`
+1. Read all `.prd/*/metadata.json`
+2. Find PRDs with `status: "drafting"`
 3. If multiple, ask which to continue (use AskUserQuestion)
 4. Resume from last completed phase
 
-### `/spec edit [name]` - Edit Existing Spec
+### `/prd edit [name]` - Edit Existing PRD
 
-1. Load existing spec
+1. Load existing PRD
 2. Show sections with numbers
 3. Ask which section to edit
 4. Re-ask relevant questions for that section
@@ -108,7 +108,7 @@ Before asking any questions, explore the codebase:
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SPEC: [Feature Name]
+PRD: [Feature Name]
 Phase 1/6: Problem Definition
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -135,7 +135,7 @@ Example: "Users lose track of interesting content and can't find it later"
 Show user:
 ```
 Based on your description, this looks like a [simple/medium/complex] feature.
-I'll ask [5/7/7+] questions to create a solid spec.
+I'll ask [5/7/7+] questions to create a solid PRD.
 ```
 
 ---
@@ -274,7 +274,7 @@ Anything to add or change?
 
 After all questions answered, generate files:
 
-### 1. SPEC.md
+### 1. PRD.md
 
 ```markdown
 # [Feature Name]
@@ -430,7 +430,7 @@ interface Update[Name]Input {
 
 ## Pre-Implementation
 
-- [ ] Read this spec completely
+- [ ] Read this PRD completely
 - [ ] Review similar pattern: `[path from CONTEXT.md]`
 - [ ] Confirm understanding with user
 
@@ -485,9 +485,9 @@ interface Update[Name]Input {
 ## Phase 6: Testing
 
 - [ ] Verify all acceptance criteria:
-  [Copy from SPEC.md]
+  [Copy from PRD.md]
 - [ ] Test edge cases:
-  [Copy from SPEC.md]
+  [Copy from PRD.md]
 
 ---
 
@@ -521,7 +521,7 @@ interface Update[Name]Input {
 4. **Adapt complexity** - Don't over-question simple features
 5. **Preserve formatting** - Keep consistent Markdown structure
 6. **Save progress** - Update metadata.json after each phase
-7. **Support resume** - User can stop anytime, `/spec continue` resumes
+7. **Support resume** - User can stop anytime, `/prd continue` resumes
 8. **Bilingual** - Accept Polish and English answers
 
 ---

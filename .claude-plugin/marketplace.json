@@ -12,9 +12,9 @@
       "description": "Team task board for Claude Code projects. Track tasks, assign to teammates, auto-recognize 'I need to do X' phrases."
     },
     {
-      "name": "claude-spec",
-      "source": "./claude-spec",
-      "description": "Interactive product specification designer. Create detailed specs through guided conversation with Claude as your product partner."
+      "name": "claude-prd",
+      "source": "./claude-prd",
+      "description": "Interactive PRD designer. Create detailed Product Requirements Documents through guided conversation with Claude as your product partner."
     }
   ]
 }
