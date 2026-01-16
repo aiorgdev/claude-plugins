@@ -78,7 +78,7 @@ We build Claude Code starter kits for founders. Complete boilerplate + AI that u
 
 | Product | What you get |
 |---------|--------------|
-| **[SaaS Starter Kit](https://aiorg.dev)** | Auth, billing, dashboard. Launch your SaaS in days. |
+| **[SaaS Dev Team](https://aiorg.dev)** | Auth, billing, dashboard. Launch your SaaS in days. |
 | **[Landing Page Kit](https://aiorg.dev)** | High-converting pages with AI copy assistance. |
 
 Visit [aiorg.dev](https://aiorg.dev) to learn more.
