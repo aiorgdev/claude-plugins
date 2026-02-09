@@ -1,5 +1,8 @@
 # AI Org Claude Code Plugins
 
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Claude Code](https://img.shields.io/badge/built%20for-Claude%20Code-blueviolet)](https://docs.anthropic.com/en/docs/claude-code)
+
 Free, open-source plugins for Claude Code. Built by the team behind [aiorg.dev](https://aiorg.dev).
 
 ## Quick Start
@@ -76,12 +79,22 @@ Auto-generate changelog entries from git commits. Produces two formats - narrati
 
 We build Claude Code starter kits for founders. Complete boilerplate + AI that understands your code.
 
-| Product | What you get |
-|---------|--------------|
-| **[SaaS Dev Team](https://aiorg.dev)** | Auth, billing, dashboard. Launch your SaaS in days. |
-| **[Landing Page Kit](https://aiorg.dev)** | High-converting pages with AI copy assistance. |
+| Kit | Type | What you get |
+|-----|------|-------------|
+| **[Idea OS](https://aiorg.dev/kits/idea-os)** | Free | AI-powered business idea validation |
+| **[Landing Page](https://aiorg.dev/kits/landing-page)** | Free | GEO optimization for Astro projects |
+| **[SaaS Dev Team](https://aiorg.dev/kits/saas-starter)** | Paid | Auth, billing, dashboard. Launch your SaaS in days. |
+| **[Marketing OS](https://aiorg.dev/kits/marketing-os)** | Paid | Autonomous AI marketing team |
+| **[Product OS](https://aiorg.dev/kits/product-os)** | Paid | Product management with AI |
 
-Visit [aiorg.dev](https://aiorg.dev) to learn more.
+Visit [aiorg.dev](https://aiorg.dev) to see all kits.
+
+## Links
+
+- **Website:** [aiorg.dev](https://aiorg.dev)
+- **Documentation:** [aiorg.dev/docs](https://aiorg.dev/docs)
+- **All kits:** [aiorg.dev/#kits](https://aiorg.dev/#kits)
+- **Issues:** [github.com/aiorgdev/claude-plugins/issues](https://github.com/aiorgdev/claude-plugins/issues)
 
 ## Contributing
 
