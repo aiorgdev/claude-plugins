@@ -150,6 +150,8 @@ def main():
     t("readlink",          "readlink node_modules/ts-node", "allow")
     t("realpath",          "realpath ./src",               "allow")
     t("stat file",         "stat package.json",            "allow")
+    t("sips dimensions",   "sips -g pixelWidth -g pixelHeight logo.png", "allow")
+    t("file and sips",     "file logo@3x.png && sips -g pixelWidth -g pixelHeight logo@3x.png", "allow")
 
     print("\n=== Build artifacts cleanup ===")
     t("rm node_modules",   "rm -rf node_modules",          "allow")
