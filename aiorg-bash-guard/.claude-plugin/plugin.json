@@ -1,0 +1,11 @@
+{
+  "name": "aiorg-bash-guard",
+  "description": "Blocks dangerous bash commands, auto-approves safe dev tools. 3-layer security: deny destructive ops, allow known tools, prompt for unknown.",
+  "version": "1.0.0",
+  "author": {
+    "name": "AI Org",
+    "url": "https://aiorg.dev"
+  },
+  "repository": "https://github.com/aiorgdev/claude-plugins",
+  "keywords": ["security", "bash", "hooks", "safety", "guard", "permissions"]
+}

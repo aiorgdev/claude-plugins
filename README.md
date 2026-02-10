@@ -75,6 +75,24 @@ Auto-generate changelog entries from git commits. Produces two formats - narrati
 
 ---
 
+### aiorg-bash-guard
+
+Security guard for bash commands. Blocks dangerous commands instantly, auto-approves 100+ safe dev tools, prompts you for the rest. Zero dependencies, instant evaluation.
+
+- Blocks `rm -rf /`, credential access, `| bash`, force push main, `DROP DATABASE`, cloud destruction
+- Auto-approves git, npm, docker, curl, aws, gcloud, stripe, and 100+ more
+- Catches `python3 -c "os.system('rm -rf /')"` (inline code scanning)
+- Sees through `sudo`, `env`, `timeout` wrappers
+- 125+ tests included
+
+```bash
+/plugin install aiorg-bash-guard@aiorg-plugins
+```
+
+[Full documentation](./aiorg-bash-guard/README.md)
+
+---
+
 ## More from AI Org
 
 We build Claude Code starter kits for founders. Complete boilerplate + AI that understands your code.

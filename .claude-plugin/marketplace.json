@@ -20,6 +20,11 @@
       "name": "aiorg-changelog",
       "source": "./aiorg-changelog",
       "description": "Auto-generate changelog entries from git commits. Narrative JSON for landing pages, classic Markdown for developers."
+    },
+    {
+      "name": "aiorg-bash-guard",
+      "source": "./aiorg-bash-guard",
+      "description": "Blocks dangerous bash commands, auto-approves safe dev tools. 3-layer security for Claude Code."
     }
   ]
 }
