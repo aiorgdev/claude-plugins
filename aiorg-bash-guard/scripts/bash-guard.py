@@ -109,7 +109,7 @@ ALLOW_PATTERNS = [
     r'^(jq|yq|sed|awk|cut|tr|tee|xargs)\b',
     r'^(tar|zip|unzip|gzip|gunzip|bzip2)\b',
     r'^(make|cmake|cargo|go|rustc|gcc|g\+\+|javac|java|mvn|gradle)\b',
-    r'^(flutter|dart)\b',
+    r'^(flutter|dart|fvm)\b',
     r'^(open|pbcopy|pbpaste|say|sips|sw_vers|uname|hostname|uptime|df|du|free|top|htop)\b',
     r'^(date|cal|time|timeout|sleep|wait)\b',
     r'^(lsof|ps|kill|killall|pgrep|pkill)\b',
