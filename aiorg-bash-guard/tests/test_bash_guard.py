@@ -230,6 +230,51 @@ print(f'status: {sub.get(\"status\")}')
     t("unknown binary",    "/opt/custom/tool --flag",      "passthrough")
     t("socat",             "socat TCP-LISTEN:8080 -",      "passthrough")
 
+    # ======================================================
+    # PATH-QUALIFIED COMMANDS
+    # ======================================================
+
+    print("\n=== Path-qualified interpreters ===")
+    t("venv python",       ".venv/bin/python scripts/action.py", "allow")
+    t("venv python3",      ".venv/bin/python3 scripts/action.py", "allow")
+    t("abs python",        "/usr/local/bin/python3 script.py", "allow")
+    t("abs node",          "/usr/local/bin/node server.js",  "allow")
+    t("venv pip",          ".venv/bin/pip install requests", "allow")
+    t("venv + sleep + venv", ".venv/bin/python scripts/a.py && sleep 3 && .venv/bin/python scripts/b.py", "allow")
+    t("path unknown",      "/opt/custom/tool --flag",       "passthrough")
+
+    # ======================================================
+    # HEREDOC HANDLING
+    # ======================================================
+
+    print("\n=== Heredoc commands ===")
+    heredoc_curl = """curl -s "https://api.reddit.com/search.json?q=test" 2>&1 | python3 << 'PYEOF'
+import json, sys, time
+data = json.load(sys.stdin)
+posts = data.get('data', {}).get('children', [])
+for p in posts:
+    print(p['data']['title'])
+PYEOF"""
+    t("curl pipe heredoc", heredoc_curl, "allow")
+
+    heredoc_python = """.venv/bin/python scripts/browser-action.py navigate "https://reddit.com" 2>/dev/null && sleep 3 && .venv/bin/python scripts/browser-action.py get_links 2>/dev/null | python3 -c "
+import json, sys
+links = json.load(sys.stdin)
+for l in links:
+    print(l)
+" """
+    t("venv + pipe python", heredoc_python, "allow")
+
+    heredoc_simple = """python3 << 'EOF'
+print("hello world")
+EOF"""
+    t("simple heredoc",    heredoc_simple, "allow")
+
+    heredoc_deny = """python3 << 'EOF'
+import os; os.system("rm -rf /")
+EOF"""
+    t("deny in heredoc",   heredoc_deny, "deny")
+
     print("\n=== Edge cases ===")
     t("empty command",     "",                             "passthrough")
     t("comment",           "# this is a comment",          "allow")

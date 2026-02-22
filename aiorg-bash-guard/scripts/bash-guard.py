@@ -109,6 +109,7 @@ ALLOW_PATTERNS = [
     r'^(jq|yq|sed|awk|cut|tr|tee|xargs)\b',
     r'^(tar|zip|unzip|gzip|gunzip|bzip2)\b',
     r'^(make|cmake|cargo|go|rustc|gcc|g\+\+|javac|java|mvn|gradle)\b',
+    r'^(flutter|dart)\b',
     r'^(open|pbcopy|pbpaste|say|sips|sw_vers|uname|hostname|uptime|df|du|free|top|htop)\b',
     r'^(date|cal|time|timeout|sleep|wait)\b',
     r'^(lsof|ps|kill|killall|pgrep|pkill)\b',
@@ -351,6 +352,13 @@ def check_single_command(cmd):
             if re.search(pattern, name):
                 return True
 
+    # Try basename for path-qualified commands (e.g. .venv/bin/python -> python)
+    if '/' in name:
+        basename_cmd = name.rsplit('/', 1)[-1]
+        for pattern in ALLOW_PATTERNS:
+            if re.search(pattern, basename_cmd):
+                return True
+
     # Try after stripping wrapper commands (sudo, timeout, env, etc.)
     unwrapped = strip_wrappers(clean)
     if unwrapped != clean:
@@ -361,9 +369,46 @@ def check_single_command(cmd):
     return False
 
 
+def collapse_heredocs(command):
+    """Remove heredoc bodies from command string before splitting.
+
+    Heredoc content is already scanned by deny patterns (Layer 1).
+    For allow patterns (Layer 2), we only need to check the command itself,
+    not the heredoc body. This prevents heredoc lines (e.g. 'import json')
+    from being treated as separate shell commands during splitting.
+    """
+    lines = command.split('\n')
+    result = []
+    heredoc_delim = None
+
+    for line in lines:
+        if heredoc_delim is not None:
+            # Inside heredoc body -- check for closing delimiter
+            if line.strip() == heredoc_delim:
+                heredoc_delim = None
+            continue
+
+        # Detect heredoc start: cmd << 'DELIM' or << DELIM or <<- "DELIM"
+        m = re.search(r'<<-?\s*\\?[\'"]?(\w+)[\'"]?\s*$', line)
+        if m:
+            heredoc_delim = m.group(1)
+            # Keep the command part, strip the heredoc operator
+            cleaned = line[:m.start()].rstrip()
+            if cleaned:
+                result.append(cleaned)
+            continue
+
+        result.append(line)
+
+    return '\n'.join(result)
+
+
 def check_allow_patterns(command):
     """Check if all commands in a compound command match allow patterns."""
-    segments = split_shell_commands(command.strip())
+    # Collapse heredocs before splitting to prevent heredoc body lines
+    # from being treated as separate commands
+    collapsed = collapse_heredocs(command)
+    segments = split_shell_commands(collapsed.strip())
     if not segments:
         return False
     return all(check_single_command(seg) for seg in segments)
