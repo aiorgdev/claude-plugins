@@ -125,7 +125,7 @@ ALLOW_PATTERNS = [
     r'^(nvm|fnm|volta|asdf|mise|rtx)\b',
     r'^(brew|apt|yum|dnf|pacman|apk)\b',
     r'^(systemctl|launchctl|service)\s+(status|list|show)\b',
-    r'^(claude)\b',
+    r'^(claude|gemini)\b',
     r'^(readlink|realpath|basename|dirname|stat|md5|sha\d+sum|shasum)\b',
     r'rm\s+(-[rfv]+\s+)*(\S+/)*(node_modules|dist|build|lib|\.next|\.cache|\.turbo|coverage|\.parcel-cache|__pycache__|\.pytest_cache|\.mypy_cache|\.venv|venv|out|\.output|\.nuxt|\.svelte-kit|\.angular|target/debug|target/release)\b',
     r'rm\s+(-[fv]+\s+)*[^-\s]',             # rm without -r (single file deletion)
@@ -318,7 +318,7 @@ def extract_command_name(cmd):
     """Extract the first command word, skipping env var assignments."""
     cmd = cmd.strip()
     while True:
-        m = re.match(r'^[A-Z_][A-Z0-9_]*=(?:\$\([^)]*\)|"[^"]*"|\'[^\']*\'|\S+)\s+', cmd)
+        m = re.match(r'^[A-Za-z_][A-Za-z0-9_]*=(?:\$\([^)]*\)|"[^"]*"|\'[^\']*\'|\S+)\s+', cmd)
         if not m:
             break
         cmd = cmd[m.end():]
@@ -332,9 +332,10 @@ def check_single_command(cmd):
     if not cmd:
         return True
 
-    # Standalone variable assignment (e.g. TOKEN=$(gcloud auth ...))
+    # Standalone variable assignment (e.g. TOKEN=$(gcloud auth ...), title="hello")
     # Safe because deny patterns already caught dangerous content in Layer 1
-    if re.match(r'^[A-Z_][A-Z0-9_]*=', cmd) and '&&' not in cmd:
+    # Supports both uppercase (TOKEN=) and lowercase (title=) variable names
+    if re.match(r'^[A-Za-z_][A-Za-z0-9_]*=', cmd) and '&&' not in cmd:
         return True
 
     # Strip redirections for cleaner matching (2>/dev/null, >/tmp/out, etc.)
