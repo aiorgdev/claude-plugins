@@ -105,7 +105,7 @@ ALLOW_PATTERNS = [
     r'^(ls|cat|head|tail|find|grep|rg|ag|wc|sort|uniq|diff|comm)\b',
     r'^(echo|printf|test|\[|true|false|pwd|whoami|which|whereis|type|file)\b',
     r'^(mkdir|touch|cp|mv|ln|cd)\b',
-    r'^(curl|wget|http)\b',
+    r'^(curl|wget|http|dig|nslookup|host|whois|ping|traceroute)\b',
     r'^(jq|yq|sed|awk|cut|tr|tee|xargs)\b',
     r'^(tar|zip|unzip|gzip|gunzip|bzip2)\b',
     r'^(make|cmake|cargo|go|rustc|gcc|g\+\+|javac|java|mvn|gradle)\b',
