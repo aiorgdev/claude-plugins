@@ -103,7 +103,8 @@ ALLOW_PATTERNS = [
     r'^(stripe|vercel|supabase|fly|railway|heroku|netlify|firebase|wrangler|coolify)\b',
     r'^(aws|gcloud|az|terraform|kubectl|helm)\b',
     r'^(ls|cat|head|tail|find|grep|rg|ag|wc|sort|uniq|diff|comm)\b',
-    r'^(echo|printf|test|\[|true|false|pwd|whoami|which|whereis|type|file)\b',
+    r'^(echo|printf|test|true|false|pwd|whoami|which|whereis|type|file)\b',
+    r'^\[[\s\S]',                              # [ (test command)
     r'^(mkdir|touch|cp|mv|ln|cd)\b',
     r'^(curl|wget|http|dig|nslookup|host|whois|ping|traceroute)\b',
     r'^(jq|yq|sed|awk|cut|tr|tee|xargs)\b',
@@ -117,7 +118,7 @@ ALLOW_PATTERNS = [
     r'^(psql|mysql|sqlite3|mongosh|redis-cli)\b',
     r'^(gh|hub|lab)\b',
     r'^(chmod|chown)\b',
-    r'^(source|\.)\s',
+    r'^\\?(source|\.)\s',
     r'^(export|unset|set)\b',
     r'^(if|for|while|case|do|done|then|else|fi)\b',
     r'^#',                                   # Comments
