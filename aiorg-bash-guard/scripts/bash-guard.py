@@ -107,7 +107,7 @@ ALLOW_PATTERNS = [
     r'^\[[\s\S]',                              # [ (test command)
     r'^(mkdir|touch|cp|mv|ln|cd)\b',
     r'^(curl|wget|http|dig|nslookup|host|whois|ping|traceroute)\b',
-    r'^(jq|yq|sed|awk|cut|tr|tee|xargs)\b',
+    r'^(jq|yq|sed|awk|cut|tr|tee|xargs|iconv|strings|od|xxd|hexdump)\b',
     r'^(tar|zip|unzip|gzip|gunzip|bzip2)\b',
     r'^(make|cmake|cargo|go|rustc|gcc|g\+\+|javac|java|mvn|gradle)\b',
     r'^(flutter|dart|fvm)\b',
